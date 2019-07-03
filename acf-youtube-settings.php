@@ -86,8 +86,11 @@ function acf_youtube_api_parts()
 
 function acf_youtube_api_parts_save( $options )
 {
-	// NOTHING RETURN EMPTY ARRAY
-	if( !is_array( $options ) || empty( $options ) || ( false === $options ) ) return array();
+	// NOTHING RETURN ONLY THE DEFAULT (REQUIRED) PARTS
+	if( !is_array( $options ) || empty( $options ) || ( false === $options ) )
+	{
+		$options = array();
+	}
 	
 	// MERGE WITH REQUIRED PARTS
 	return array_merge(acf_youtube_required_parts(), $options);
